@@ -21,7 +21,7 @@ class ProdutoDAO {
             return $l;
         }
 
-        return "erro_teste";
+        return;
     }
 
 

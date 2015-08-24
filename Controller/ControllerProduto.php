@@ -1,24 +1,46 @@
 <?php
 
-require_once("includes/Conexao.php");
-require_once("../Model/Bean/Protudo.php");
-require_once("../Model/DAO/ProdutoDAO.php");
+/*
+ *@description Controlador de Produtos
+ * @author Luis Araujo
+ * @version 1.0
+ */
 
-//$module = $_GET['module'];
-$acao = $_GET['acao'];
+class ControllerProduto {
 
-//$url = $_GET['module']. "/action/" .$_GET['acao']. ".php";
-$url = "../Model/Action/" .$_GET['acao']. ".php";
+    private $view;
+    private  $objView;
+    private  $urlDAO;
+    private  $urlClass;
 
+    public function  __construct(){
+        //Url Class
+        $this->urlClass = "../Model/Bean/Produto.php";
+        require_once($this->urlClass);
 
-require_once($url);
+        //Url View
+        $this->view = "../View/ViewProduto.php";
+        require_once($this->view);
 
-$acao = new $_GET[ 'acao'];
-$retorno = $acao->execute();
+        //Url DAO
+        $this->urlDAO = "../Model/DAO/ProdutoDAO.php";
+        require_once($this->urlDAO);
 
-//$view = $_GET['module']. "/View/frm" .$_GET['acao']. ".php";
-$view = "../View/frm" .$_GET['acao']. ".php";
+        //Instaciando o objeto View
+        $this->objView = new ViewProduto();
+    }
 
-require_once($view);
+    public function listar(){
 
-?>
+        Conexao::conectar();
+
+        $produtoDao = new ProdutoDAO();
+        $lista = $produtoDao->listarTudo();
+
+        $_REQUEST["lista"] = $lista;
+
+        $this->objView->listarTudo();
+
+    }
+
+} 

@@ -9,7 +9,7 @@
 <script>
     $(document).ready(function() {
         $("#bt_produto").click(function(){
-            $("#div_produtos").load("Controller/ControllerProduto.php?acao=Listar");
+            $("#div_produtos").load("Controller/Dispatcher.php?classe=Produto&acao=listar");
         });
 
     });
