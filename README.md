@@ -27,4 +27,4 @@ específico.
 
 ##Fluxo
 
-![Fluxo MVC](https://github.com/LuisAraujo/PHP_OOP-MVC-AJAX/blob/master/fluxo.png)
+![Fluxo MVC](https://github.com/LuisAraujo/PHP_OOP-MVC-AJAX/blob/master/fluxo2.png)
